@@ -38,8 +38,8 @@ function preload() {
 function setup() {
   createCanvas(375, 812);
   
-  //webcam = createCapture(VIDEO);
-  webcam = createVideo('test.mp4', playVideo); //비디오 파일을 분석하고자 할 때.
+  webcam = createCapture(VIDEO);
+  //webcam = createVideo('test.mp4', playVideo); //비디오 파일을 분석하고자 할 때.
   //webcam.size(375, 600);
   webcam.hide();
   detector.detect(webcam, gotDetections);
