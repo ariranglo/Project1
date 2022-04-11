@@ -261,19 +261,19 @@ function doCOCOSSD(){
       stroke(255, 134, 228);
       strokeWeight(2 * v);
       noFill();
-      rect(object.x * v, (object.y+75) * v, object.width * v, object.height * v);
+      rect(object.x , object.y+75* v, object.width , object.height);
       noStroke();
-      fill(255, 134,228);
+      fill(255, 134, 228);
       textSize(10 * v);
-      text(object.label+' '+peopleNumber, object.x * v, (object.y - 5) * v);
+      text(object.label+' '+peopleNumber, object.x , object.y - 5);
       
-      let centerX = object.x * v + (object.width/2) * v;
-      let centerY = (object.y+75) * v + (object.height/2) * v;
+      let centerX = object.x  + object.width/2;
+      let centerY = object.y+75* v + object.height/2;
       strokeWeight(4 * v);
       stroke(255, 134,228);
-      point(centerX * v, (centerY+75) * v);
+      point(centerX , centerY+75 * v);
       
-      tempMsg = tempMsg+','+peopleNumber+','+centerX * v+','+centerY * v +','+object.width * v+','+object.height * v;
+      tempMsg = tempMsg+','+peopleNumber+','+centerX+','+centerY +','+object.width +','+object.height;
       //개별 사람마다의 X, Y 좌표값 저장
     }
   }
