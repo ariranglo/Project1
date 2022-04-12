@@ -48,7 +48,9 @@ function preload() {
 
 function setup() {
   createCanvas(375 * v,812 * v);
-  webcam = createCapture(VIDEO);
+  //webcam = createCapture(VIDEO);
+  webcam = createVideo('C:/Users/bo/Downloads/climb.MOV', playVideo)
+  //webcam = createVideo('', playVideo);
   webcam.size(375 * v,600 * v);
   webcam.hide();
   
@@ -94,14 +96,14 @@ function drawButtons(currentState){
     image(btn_stop[1], 237.5 * v, 725 * v, 50 * v, 50 * v);
   } if(currentState == 2){
     
-    image(btn_pause[2], 77.5 * v, 725 * v, 50 * v, 50 * v);
+    image(btn_pause[0], 77.5 * v, 725 * v, 50 * v, 50 * v);
     image(btn_record[2], 157.5 * v, 725* v, 50 * v, 50 * v);
-    image(btn_stop[1], 237.5 * v, 725 * v, 50 * v, 50 * v);
+    image(btn_stop[2], 237.5 * v, 725 * v, 50 * v, 50 * v);
   } if(currentState == 3){
     
-    image(btn_pause[0], 77.5 * v, 725 * v, 50 * v, 50 * v);
+    image(btn_pause[2], 77.5 * v, 725 * v, 50 * v, 50 * v);
     image(btn_record[3], 157.5 * v, 725 * v, 50 * v, 50 * v);
-    image(btn_stop[2], 237.5 * v, 725 * v, 50 * v, 50 * v);
+    image(btn_stop[1], 237.5 * v, 725 * v, 50 * v, 50 * v);
   } 
 
 }
@@ -111,7 +113,7 @@ function drawButtons(currentState){
 function drawStatusBar(currentState){
 
   textFont('Inter');
-  textSize(14 * v);
+  
   
   let yy = year();
   let mm = month();
@@ -127,7 +129,9 @@ function drawStatusBar(currentState){
     fill(255);
     noStroke();
     textAlign(CENTER);
+    textSize(20 * v);
     text(recordingTime, 182.5 * v, 64 * v);
+    textSize(14 * v);
     textAlign(RIGHT);
     text(realTime, 370 * v, 695 * v);
     textAlign(LEFT);
@@ -138,11 +142,13 @@ function drawStatusBar(currentState){
 
     fill(255, 134,228);
     noStroke();
-    rect(140 * v, 45 * v,85 * v,25 * v,4);
+    rect(130 * v, 45 * v,105 * v,25 * v,5);
     fill(255);
     noStroke();
     textAlign(CENTER);
+    textSize(20 * v);
     text(recordingTime, 182.5 * v, 64 * v);
+    textSize(14 * v);
     textAlign(RIGHT);
     text(realTime, 370 * v, 695 * v);
     textAlign(LEFT);
@@ -152,7 +158,9 @@ function drawStatusBar(currentState){
     fill(255);
     noStroke();
     textAlign(CENTER);
+    textSize(20 * v);
     text(recordingTime, 182.5 * v, 64 * v);
+    textSize(14 * v);
     fill(255,153);
     textAlign(RIGHT);
     text(realTime, 370 * v, 695 * v);
@@ -161,7 +169,7 @@ function drawStatusBar(currentState){
     
     fill(255, 134, 228);
     noStroke();
-    rect(70 * v, 345 * v, 225 * v, 55 * v, 4);
+    rect(70 * v, 345 * v, 225 * v, 55 * v, 5);
     fill(255);
     textAlign(CENTER);
     text('Total Recording Time: '+recordingTime,182.5 * v, 364 * v);
@@ -173,7 +181,9 @@ function drawStatusBar(currentState){
     fill(255, 134,228);
     noStroke();
     textAlign(CENTER);
+    textSize(20 * v);
     text(recordingTime, 182.5 * v, 64 * v);
+    textSize(14 * v);
     fill(255);
     textAlign(RIGHT);
     text(realTime, 370 * v, 695 * v);
@@ -265,7 +275,7 @@ function doCOCOSSD(){
       noStroke();
       fill(255, 134, 228);
       textSize(10 * v);
-      text(object.label+' '+peopleNumber, object.x , object.y - 5);
+      text(object.label+' '+peopleNumber, object.x , object.y -5 + 75* v );
       
       let centerX = object.x  + object.width/2;
       let centerY = object.y+75* v + object.height/2;
@@ -301,4 +311,8 @@ function writeLog(currentState){
   if(currentState == 1){
     myWriter.print(writerMsg);
   }
+}
+
+function playVideo(){
+  webcam.loop();
 }
